@@ -41,7 +41,12 @@ btnTest.addEventListener('click', ()=>{
 
     const letra = testInfo.value.toLowerCase().trim();; 
     
-    if(letra === '' || letra.lenght > 1  ){
+    if(letra === ''){
+        alert ('Digite apenas uma Letra!!!!');
+        return;
+    };
+
+    if(letra.lenght > 1 ){
         alert ('Digite apenas uma Letra!!!!');
         return;
     };
