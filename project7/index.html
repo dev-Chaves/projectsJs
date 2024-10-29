@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP Sistema</title>
+    <link rel="stylesheet" href="../project8/styles/style.css">>
+</head>
+<body>
+    
+    <div id="container">
+
+        <div id="containerHead">
+            <h2>
+                Emplooyes System Control 
+            </h2>
+            <button id="btnIncluir" class="btn"> Inclued </button>
+        </div>
+
+        <div id="containerFiltrar">
+            <h4>
+                Join with name of employed
+            </h4>
+            <input type="text" id="inpFiltrarNome" placeholder="Filter">
+            <button id="btnFiltrar" class="btn"> Filter </button>
+        </div>
+
+        <div id="containerTabela">
+            <table id="tbProdutos">
+            
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Departamento</th>
+                        <th>Função</th>
+                        <th>Salário</th>
+                        <th>Controle</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyList">
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <dialog id="modalProdutos">
+            <h3>Controle De Dados</h3>
+            <div id="containerModal">
+                <div class="containerLabel">
+                    <p>Id</p>
+                    <p>Nome</p>
+                    <p>Departamento</p>
+                    <p>Função</p>
+                    <p>Salário</p>
+                </div>
+                <div id="containerInput">
+                    <input type="text" id="inputId">
+                    <input type="text" id="inputNome">
+                    <input type="text" id="inputDep">
+                    <input type="text" id="inputFunc">
+                    <input type="text" id="inputSal">
+                </div>
+            </div>
+            
+            <button id="btnIncluirModal">Incluir</button>
+            <button id="btnAlterarModal">Alterar</button>
+            <button id="btnFecharModal">Excluir</button>
+
+        </dialog>
+
+    </div>
+
+
+    <script src="./src/script.js" type="module"></script>
+</body>
+</html>
