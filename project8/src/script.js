@@ -1,39 +1,3 @@
-/*
-
-    
-
-    // const titulos = [
-    //     { texto: 'ID', id: 'idTitulo' },
-    //     { texto: 'Nome', id: 'nomeTitulo' },
-    //     { texto: 'Departamento', id: 'departamentTitulo' },
-    //     { texto: 'Função', id: 'funcaoTitulo' },
-    //     { texto: 'Salário', id: 'salarioTitulo' }
-    // ];
-
-
-    // titulos.forEach(titulo => {
-    //     const th = document.createElement('th');
-    //     th.textContent = titulo.texto; 
-    //     th.id = titulo.id;
-    //     cabecalho.appendChild(th);
-    // });
-
-    // table.appendChild(cabecalho);
-
-
-A lógica por trás da função de comparação (a, b) => a - b é simples:
-Se o valor for negativo (quando a - b < 0), a é considerado menor que b e deve aparecer antes na lista.
-Se o valor for zero (quando a - b === 0), a e b são iguais em termos de ordem.
-Se o valor for positivo (quando a - b > 0), a é considerado maior que b e deve aparecer depois.
-
-*/
-
-//const vet = [ 4, 5, 3, 2 ,9 ,1];
-//const vetPalavras = [ 'uva', 'banana', 'Laranja', 'morango']
-//const vet = [ 4, 45, 37, 3, 2 ,9 ,1];
-
-//console.log(vet);
-
 //const vetOrder = vet.sort((a, b) => a - b);
 //console.log(vetOrder);
 
@@ -48,10 +12,13 @@ const btnName = document.getElementById('btnName');
 const btnDep= document.getElementById('btnDep');
 const btnFuncao = document.getElementById('btnFuncao');
 const btnSalario = document.getElementById('btnSalario');
+const btnIncluir = document.getElementById('btnIncluir')
+const btnFecharModal = document.getElementById('btnFecharModal');
 //////////////////// BOTÕES ////////
 
 const table = document.getElementById('table');
 const cabecalho = document.getElementById('cabecalho');
+const modalProdutos = document.getElementById('modalProdutos');
 
 
 function criarTabela(dados) {
@@ -70,8 +37,8 @@ function criarTabela(dados) {
         <td>${funcionario.funcao}</td>
         <td>${funcionario.salario}</td>
         <td> 
-            <img src="./assents/3334328.png" class="btnDelete">
-            <img src="./assents/1000_F_435074402_IWFBHlPhtwWWW8May4m5Y34mFb6Fdjdm.jpg" class="btnEdit">
+            <img id="btnDel" src="./assents/3334328.png" class="btnDelete">
+            <img id="btnEdit" src="./assents/1000_F_435074402_IWFBHlPhtwWWW8May4m5Y34mFb6Fdjdm.jpg" class="btnEdit">
         </td>
     `;
     table.appendChild(tr);
@@ -125,6 +92,41 @@ btnSalario.addEventListener('click', ()=>{
     criarTabela(dadosOrdenados); // Recria a tabela com os dados ordenados
 });
 
+btnIncluir.addEventListener('click',()=>{
+    modalProdutos.showModal();
+});
+
+btnFecharModal.onclick = ()=>{
+    modalProdutos.closest();
+}
+
+
 // Em desenvolvimento 
 
 // FAZER A BARRA FIxA ( Foi ajustado o erro )
+
+// Como pegar o target ( da lixeira e editar ? )
+
+table.addEventListener('click',(e)=>{
+    const target = e.target;
+
+    // Verificar se o botão(img foi clicado)
+
+    if( target.tagName == 'IMG'){
+        const linha = target.closest('tr');
+
+        //
+
+        const dados = {
+            id: linha.cells[0].innerHTML,
+            nome: linha.cells[1].innerHTML,
+            dep: linha.cells[2].innerHTML,
+            funcao: linha.cells[3].innerHTML,
+            sal: linha.cells[4].innerHTML,
+        };
+
+        console.log(dados);
+
+    };  
+
+});
