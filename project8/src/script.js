@@ -14,11 +14,13 @@ const btnFuncao = document.getElementById('btnFuncao');
 const btnSalario = document.getElementById('btnSalario');
 const btnIncluir = document.getElementById('btnIncluir')
 const btnFecharModal = document.getElementById('btnFecharModal');
+const btnFiltrar = document.getElementById('btnFiltrar');
 //////////////////// BOTÕES ////////
 
 const table = document.getElementById('table');
 const cabecalho = document.getElementById('cabecalho');
 const modalProdutos = document.getElementById('modalProdutos');
+const inpFiltrarNome = document.getElementById('inpFiltrarNome');
 
 
 function criarTabela(dados) {
@@ -52,9 +54,8 @@ function criarTabela(dados) {
 
 criarTabela(funcionarios.banco); // PRIMEIRA TENTATIVA
 
-// Botões de Organizar a Tabela
-
 btnName.addEventListener('click', ()=>{
+
     alert('Dados sendo ordenados por Nome:');
     const dadosOrdenados = funcionarios.banco.sort((a, b) => a.nome.localeCompare(b.nome));
     console.log('Dados ordenados por Nome:', dadosOrdenados);
@@ -97,8 +98,23 @@ btnIncluir.addEventListener('click',()=>{
 });
 
 btnFecharModal.onclick = ()=>{
-    modalProdutos.closest();
+    modalProdutos.close();
 }
+
+btnFiltrar.addEventListener('click', ()=>{
+    let data = inpFiltrarNome.value.trim().toLowerCase();
+
+    console.log(data);
+
+    const dadosOrdenados = funcionarios.banco.filter((funcionario)=> funcionario.nome.toLowerCase().includes(data));
+
+    console.log(dadosOrdenados);
+
+    criarTabela(dadosOrdenados);
+
+});
+
+
 
 
 // Em desenvolvimento 
